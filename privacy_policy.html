@@ -42,7 +42,7 @@ Uploaded images and inputs are processed by AI models to generate dermatology-re
 
 AI outputs are provided for informational purposes only
 
-AI outputs do not constitute a confirmed or final medical diagnosis
+AI outputs do not constitute a confirmed or final medical assessment
 
 1.4 Usage & Analytics Information
 
@@ -55,6 +55,34 @@ Device and performance information
 Crash and error logs
 
 This data is collected using Firebase Analytics to improve app stability, safety, and performance.
+
+1.5 Data Safety
+
+We take data safety and transparency seriously. The following summarizes key details you will also see in the Google Play Data Safety section:
+
+- Photos and videos (skin images): Collected — Purpose: AI inference and doctor consultation; Shared with: platform doctors and Microsoft Azure for storage and processing; Encrypted in transit: Yes (TLS); Encrypted at rest: Yes; Retention: 90 days by default unless the user requests earlier deletion.
+- Health & fitness data (symptoms, health descriptions, chat messages): Collected — Purpose: consultation and medical recordkeeping; Shared with: platform doctors and Microsoft Azure; Encrypted in transit: Yes; Encrypted at rest: Yes; Retention: 90 days unless otherwise required by law.
+- Identifiers (Firebase UID, device identifiers): Collected — Purpose: authentication, fraud prevention, and analytics; Shared with: Firebase and analytics providers; Encrypted in transit: Yes; Encrypted at rest: Yes; Retention: as required to operate the service.
+- Crash and diagnostics (logs): Collected — Purpose: app stability and debugging; Shared with: Firebase (Crashlytics) for diagnostics; Encrypted in transit: Yes; Encrypted at rest: Yes; Retention: per provider default.
+
+Third-party processing partners and links:
+
+- Firebase (Google): https://firebase.google.com/support/privacy
+- Microsoft Azure: https://privacy.microsoft.com
+
+By uploading images or providing health information you explicitly consent to the processing of Sensitive Personal Data for the purposes described above. You may withdraw consent and request deletion as described in the "Data Retention" and "Contact" sections below.
+
+Data retention and deletion process
+
+Images and consultation records are retained for 90 days after last access by default. You can request deletion at any time. To request deletion outside the app, email dermalensai@outlook.com with your account UID; we will verify identity and complete deletion or anonymization within 30 days of a verified request. Deletion requests submitted from the in-app `Delete Account` flow are treated as verified and should be actioned within 30 days.
+
+Age verification and minors
+
+The App is intended for users aged 18 and over and relies on self-declaration at account creation. If we become aware of an account used by a person under 18, we will suspend the account and provide instructions to have data removed upon verified parental/guardian request.
+
+Not a medical device
+
+The App and its AI functionality are not medical devices. All AI outputs are informational only and are not intended for clinical use or as the sole basis for medical decisions.
 
 2. How We Use Your Information
 
@@ -145,6 +173,8 @@ Role-based access controls
 
 No method of transmission or storage is completely secure, and absolute security cannot be guaranteed.
 
+Encryption at rest: Data stored by our cloud providers is protected using industry-standard encryption at rest in addition to TLS in transit. Where we control storage configuration, we ensure encryption-at-rest is enabled.
+
 7. Data Sharing
 
 We may share data only in the following circumstances:
@@ -191,6 +221,8 @@ Withdraw consent by discontinuing use of the App
 
 Requests can be made by contacting:
 📧 dermalensai@outlook.com
+
+Account deletion via app: You can request deletion from the app by using the `Delete Account` option available under your Profile. Requests submitted via the app are processed as verified deletion requests. If you cannot access the app, contact us at the email above and include your account UID.
 
 10. Data Retention
 
