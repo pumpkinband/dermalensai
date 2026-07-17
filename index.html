@@ -1,194 +1,411 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DermaLens AI</title>
-
-  <style>
-    :root {
-      --text: #ff9999;
-      --background: #fbfbfe;
-      --primary: #E9B5B2;
-      --secondary: #F3D3CF;
-      --accent: #F7E7E5;
+<meta charset="utf-8" />
+<title>DermaLens AI — AI Skin Screening, Backed by Real Doctors</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="DermaLens AI turns your phone camera into a first opinion on skin concerns — an AI screening pipeline with a licensed doctor one tap away." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%23E9B5B2'/%3E%3Ccircle cx='50' cy='50' r='28' fill='none' stroke='%23241C1B' stroke-width='3' opacity='.35'/%3E%3Ccircle cx='50' cy='50' r='10' fill='%23241C1B' opacity='.55'/%3E%3C/svg%3E" />
+<style>
+  :root{
+    --rose:#E9B5B2; --rose-deep:#C48D8A; --blush:#F7E7E5;
+    --ink:#241C1B; --ink-muted:#6B5F5D; --paper:#FBF9F8; --paper-raised:#FFFFFF;
+    --line:#E8DEDC; --success:#1F8B4C; --success-soft:#E4F3EA;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --rose:#EFC3C0; --rose-deep:#D89E9B; --blush:#2E2321;
+      --ink:#F3ECEA; --ink-muted:#B8A9A6; --paper:#1F1918; --paper-raised:#241D1B;
+      --line:#3A2E2C; --success:#4CBB7C; --success-soft:#1C3327;
     }
+  }
+  :root[data-theme="dark"]{
+    --rose:#EFC3C0; --rose-deep:#D89E9B; --blush:#2E2321;
+    --ink:#F3ECEA; --ink-muted:#B8A9A6; --paper:#1F1918; --paper-raised:#241D1B;
+    --line:#3A2E2C; --success:#4CBB7C; --success-soft:#1C3327;
+  }
+  :root[data-theme="light"]{
+    --rose:#E9B5B2; --rose-deep:#C48D8A; --blush:#F7E7E5;
+    --ink:#241C1B; --ink-muted:#6B5F5D; --paper:#FBF9F8; --paper-raised:#FFFFFF;
+    --line:#E8DEDC; --success:#1F8B4C; --success-soft:#E4F3EA;
+  }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  a{ color:inherit; }
+  .serif{ font-family:"Iowan Old Style","Palatino Linotype",Georgia,"Times New Roman",serif; }
+  .mono{ font-family:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace; font-variant-numeric:tabular-nums; }
 
-    body {
-      background-color: var(--background);
-      color: #333;
-      line-height: 1.6;
-    }
+  section{ padding:88px 24px; }
+  .inner{ max-width:1040px; margin:0 auto; }
+  .inner-narrow{ max-width:680px; margin:0 auto; }
 
-    header {
-      background: linear-gradient(
-        135deg,
-        var(--primary),
-        var(--secondary)
-      );
-      padding: 3rem 1.5rem;
-      text-align: center;
-      border-bottom: 1px solid var(--accent);
-    }
+  h1,h2,h3{ text-wrap:balance; margin:0; }
+  h2{ font-size:clamp(28px,4vw,42px); font-weight:800; letter-spacing:-.015em; line-height:1.1; margin:0 0 18px; }
+  .lede{ font-size:18px; line-height:1.6; color:var(--ink-muted); max-width:62ch; margin:0; }
+  .lede.serif{ font-size:19px; line-height:1.65; }
+  p{ margin:0 0 14px; }
+  p:last-child{ margin-bottom:0; }
 
-    header h1 {
-      color: #fff;
-      font-size: 2.6rem;
-      margin-bottom: 0.5rem;
-    }
+  .eyebrow{
+    font-size:11.5px; font-weight:800; text-transform:uppercase; letter-spacing:.14em;
+    margin:0 0 16px; display:flex; align-items:center; gap:10px; color:var(--rose-deep);
+  }
+  .eyebrow::before{ content:""; width:22px; height:2px; background:currentColor; display:inline-block; }
 
-    header p {
-      color: #fff;
-      max-width: 720px;
-      margin: 0.5rem auto 0;
-      font-size: 1.05rem;
-    }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    font-family:inherit; font-size:14.5px; font-weight:700; letter-spacing:.01em;
+    padding:14px 24px; border-radius:8px; text-decoration:none; cursor:pointer;
+    border:1.5px solid transparent; transition:transform .15s ease, filter .15s ease, background .15s ease;
+  }
+  .btn:hover{ transform:translateY(-1px); }
+  .btn-primary{ background:var(--ink); color:var(--paper); }
+  .btn-primary:hover{ filter:brightness(1.15); }
+  .btn-ghost{ background:transparent; color:var(--ink); border-color:rgba(36,28,27,.3); }
+  .btn-ghost:hover{ background:rgba(36,28,27,.06); }
+  .btn-on-ink{ background:var(--rose); color:var(--ink); }
+  .btn-on-ink:hover{ filter:brightness(1.08); }
+  .btn-on-ink-ghost{ background:transparent; color:var(--paper); border-color:rgba(251,249,248,.35); }
+  .btn-on-ink-ghost:hover{ background:rgba(251,249,248,.1); }
 
-    main {
-      max-width: 900px;
-      margin: 3rem auto;
-      padding: 0 1.5rem;
-    }
+  /* ---------- Nav ---------- */
+  .nav{
+    position:sticky; top:0; z-index:40; background:color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter:blur(10px); border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1040px; margin:0 auto; padding:14px 24px;
+    display:flex; align-items:center; justify-content:space-between; gap:20px;
+  }
+  .wordmark{ display:flex; align-items:center; gap:10px; text-decoration:none; }
+  .mark{ width:26px; height:26px; border-radius:50%; background:var(--rose); position:relative; flex-shrink:0; }
+  .mark::before{ content:""; position:absolute; inset:6px; border-radius:50%; border:1.5px solid var(--ink); opacity:.4; }
+  .mark::after{ content:""; position:absolute; inset:10px; border-radius:50%; background:var(--ink); opacity:.55; }
+  .wordmark-text{ font-weight:800; font-size:16px; letter-spacing:-.01em; color:var(--ink); }
+  .nav-links{ display:flex; align-items:center; gap:28px; font-size:14px; font-weight:600; }
+  .nav-links a{ text-decoration:none; color:var(--ink-muted); transition:color .15s; }
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-cta{ display:flex; align-items:center; gap:12px; }
+  .nav-toggle{ display:none; background:none; border:none; cursor:pointer; padding:6px; }
+  .nav-toggle span{ display:block; width:22px; height:2px; background:var(--ink); margin:5px 0; }
 
-    section {
-      background: #fff;
-      border-radius: 12px;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
-      border: 1px solid var(--accent);
+  @media (max-width:860px){
+    .nav-links{
+      position:absolute; top:100%; left:0; right:0; background:var(--paper-raised);
+      flex-direction:column; align-items:flex-start; gap:0; border-bottom:1px solid var(--line);
+      max-height:0; overflow:hidden; transition:max-height .2s ease;
     }
+    .nav-links.open{ max-height:320px; }
+    .nav-links a{ padding:14px 24px; width:100%; border-top:1px solid var(--line); color:var(--ink); }
+    .nav-cta .btn-ghost{ display:none; }
+    .nav-toggle{ display:block; }
+  }
 
-    section h2 {
-      color: var(--text);
-      margin-bottom: 1rem;
-      font-size: 1.4rem;
-    }
+  /* ---------- Hero ---------- */
+  #hero{
+    background:var(--rose); color:var(--ink); padding:80px 24px 96px;
+    position:relative; overflow:hidden;
+  }
+  #hero .inner{ max-width:960px; position:relative; z-index:1; }
+  #hero .kicker{
+    font-size:12.5px; font-weight:800; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--ink); opacity:.72; margin:0 0 24px;
+  }
+  #hero h1{ font-size:clamp(40px,7.5vw,78px); font-weight:800; letter-spacing:-.03em; line-height:1; margin:0 0 22px; }
+  #hero .tagline{
+    font-family:"Iowan Old Style","Palatino Linotype",Georgia,serif; font-style:italic;
+    font-size:clamp(17px,2.1vw,22px); max-width:52ch; line-height:1.55; margin:0 0 36px; opacity:.88;
+  }
+  #hero .cta-row{ display:flex; flex-wrap:wrap; gap:14px; margin-bottom:40px; }
+  #hero .trust{ display:flex; flex-wrap:wrap; gap:24px; font-size:13px; font-weight:600; padding-top:24px; border-top:1.5px solid rgba(36,28,27,.25); opacity:.85; }
+  .scan-mark{
+    position:absolute; right:-10%; top:50%; transform:translateY(-50%);
+    width:480px; height:480px; border-radius:50%; border:1.5px solid rgba(36,28,27,.18); opacity:.6;
+  }
+  .scan-mark::before{ content:""; position:absolute; inset:60px; border-radius:50%; border:1.5px solid rgba(36,28,27,.18); }
+  .scan-mark::after{ content:""; position:absolute; inset:120px; border-radius:50%; border:1.5px solid rgba(36,28,27,.18); }
 
-    section p {
-      color: #444;
-      margin-bottom: 1rem;
-    }
+  /* ---------- backgrounds ---------- */
+  .bg-paper{ background:var(--paper); }
+  .bg-raised{ background:var(--paper-raised); }
+  .bg-blush{ background:var(--blush); }
+  .bg-ink{ background:var(--ink); color:var(--paper); }
+  .bg-ink .ink-muted{ color:color-mix(in srgb, var(--paper) 65%, transparent); }
 
-    ul {
-      padding-left: 1.2rem;
-      margin-top: 0.5rem;
-    }
+  /* ---------- Problem cards ---------- */
+  .grid-3{ display:grid; grid-template-columns:1fr; gap:14px; margin-top:36px; }
+  @media (min-width:720px){ .grid-3{ grid-template-columns:repeat(3,1fr); } }
+  .card{ border:1px solid var(--line); border-radius:8px; padding:22px 20px; background:var(--paper-raised); }
+  .card h3{ font-size:15.5px; font-weight:700; margin:0 0 8px; }
+  .card p{ font-size:14.5px; color:var(--ink-muted); }
 
-    ul li {
-      margin-bottom: 0.6rem;
-    }
+  /* ---------- Flow ---------- */
+  .flow{ display:grid; grid-template-columns:1fr; gap:0; margin-top:40px; }
+  @media (min-width:760px){ .flow{ grid-template-columns:repeat(4,1fr); } }
+  .flow-step{ position:relative; padding:24px 20px 20px; border-top:2px solid var(--line); }
+  @media (min-width:760px){
+    .flow-step{ border-top:none; border-left:2px solid var(--line); }
+    .flow-step:first-child{ border-left:none; }
+  }
+  .flow-step .fn{ font-family:ui-monospace,SFMono-Regular,Consolas,monospace; font-size:13px; font-weight:700; color:var(--rose-deep); margin:0 0 10px; }
+  .flow-step h3{ font-size:16px; font-weight:700; margin:0 0 8px; }
+  .flow-step p{ font-size:14px; color:var(--ink-muted); }
 
-    .links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
+  /* ---------- Pipeline ---------- */
+  .pipeline{ display:flex; flex-direction:column; gap:0; margin-top:40px; }
+  @media (min-width:760px){ .pipeline{ flex-direction:row; align-items:stretch; } }
+  .pipe-stage{ flex:1; background:var(--paper-raised); border:1px solid var(--line); border-radius:8px; padding:24px 20px; display:flex; flex-direction:column; gap:8px; }
+  .pipe-arrow{ display:flex; align-items:center; justify-content:center; color:var(--rose-deep); font-size:20px; padding:8px 0; }
+  @media (min-width:760px){ .pipe-arrow{ padding:0 6px; } }
+  .pipe-stage .stage-tag{ font-size:10.5px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--rose-deep); }
+  .pipe-stage h3{ font-size:16px; font-weight:700; margin:2px 0 2px; }
+  .pipe-stage p{ font-size:13.5px; color:var(--ink-muted); line-height:1.55; }
 
-    .links a {
-      text-decoration: none;
-      padding: 0.7rem 1.2rem;
-      background-color: var(--primary);
-      color: #fff;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      transition: background-color 0.2s ease;
-    }
+  .stat-row{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:40px; }
+  @media (min-width:720px){ .stat-row{ grid-template-columns:repeat(4,1fr); } }
+  .stat{ border-left:2px solid var(--rose); padding-left:16px; }
+  .stat .big{ font-size:clamp(24px,3vw,32px); font-weight:800; letter-spacing:-.02em; }
+  .stat .lbl{ font-size:12.5px; color:var(--ink-muted); margin-top:4px; }
 
-    .links a:hover {
-      background-color: var(--text);
-    }
+  /* ---------- App walkthrough ---------- */
+  .walk{ display:grid; grid-template-columns:1fr; gap:14px; margin-top:36px; }
+  @media (min-width:720px){ .walk{ grid-template-columns:repeat(4,1fr); } }
+  .walk-item{ background:var(--paper-raised); border:1px solid var(--line); border-radius:8px; padding:20px; }
+  .walk-item .wn{ font-family:ui-monospace,monospace; font-size:12px; color:var(--rose-deep); font-weight:700; margin-bottom:8px; }
+  .walk-item h3{ font-size:15px; font-weight:700; margin:0 0 6px; }
+  .walk-item p{ font-size:13.5px; color:var(--ink-muted); }
+  .walk-item .mode{ display:inline-block; margin-top:10px; font-size:10.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--success); background:var(--success-soft); padding:3px 8px; border-radius:4px; }
 
-    footer {
-      background-color: var(--accent);
-      text-align: center;
-      padding: 1.5rem;
-      font-size: 0.85rem;
-      color: #555;
-      border-top: 1px solid var(--secondary);
-    }
+  /* ---------- Deck banner ---------- */
+  #deck-banner .inner{ display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:28px; }
+  #deck-banner .copy{ max-width:520px; }
+  #deck-banner h2{ color:var(--paper); font-size:clamp(24px,3.4vw,34px); }
+  #deck-banner p{ font-size:15px; }
 
-    footer strong {
-      color: #333;
-    }
-  </style>
+  /* ---------- Disclaimer ---------- */
+  .disclaimer-card{ border:1px solid var(--line); border-radius:10px; background:var(--paper-raised); padding:32px 28px; }
+  .disclaimer-card ul{ margin:16px 0 0; padding-left:20px; }
+  .disclaimer-card li{ font-size:14.5px; color:var(--ink-muted); margin-bottom:8px; line-height:1.55; }
+
+  /* ---------- Footer ---------- */
+  footer{ padding:56px 24px 40px; border-top:1px solid var(--line); }
+  footer .inner{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:40px; }
+  footer h4{ font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:var(--rose-deep); margin:0 0 14px; }
+  footer .col p, footer .col a{ display:block; font-size:13.5px; color:var(--ink-muted); text-decoration:none; margin-bottom:8px; }
+  footer .col a:hover{ color:var(--ink); }
+  footer .bottom{ max-width:1040px; margin:40px auto 0; padding-top:24px; border-top:1px solid var(--line); font-size:12.5px; color:var(--ink-muted); display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; }
+</style>
 </head>
-
 <body>
 
-  <header>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="wordmark">
+      <span class="mark" aria-hidden="true"></span>
+      <span class="wordmark-text">DermaLens AI</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#problem">About</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#technology">Technology</a>
+      <a href="pitch-deck.html">Pitch Deck</a>
+    </div>
+    <div class="nav-cta">
+      <a href="pitch-deck.html" class="btn btn-ghost">Pitch Deck</a>
+      <a href="https://play.google.com/store/apps/details?id=com.dermalens.ai" class="btn btn-primary">Get the App</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="scan-mark" aria-hidden="true"></div>
+  <div class="inner">
+    <p class="kicker">AI Skin Screening &middot; India</p>
     <h1>DermaLens AI</h1>
-    <p>
-      AI-assisted dermatology support platform providing informational skin analysis
-      and doctor-assisted consultations. Designed to support — not replace —
-      professional medical care.
-    </p>
-  </header>
+    <p class="tagline">Clinically-reviewed AI skin screening, with a real licensed doctor one tap away.</p>
+    <div class="cta-row">
+      <a href="https://play.google.com/store/apps/details?id=com.dermalens.ai" class="btn btn-primary">Get the App on Google Play</a>
+      <a href="pitch-deck.html" class="btn btn-ghost">View Pitch Deck &rarr;</a>
+    </div>
+    <div class="trust">
+      <span>Reviewed by a licensed physician</span>
+      <span>Doctor chat, in-app</span>
+      <span>Free to use today</span>
+    </div>
+  </div>
+</section>
 
-  <main>
-
-    <section>
-      <h2>About DermaLens AI</h2>
-      <p>
-        DermaLens AI is a medical support application that uses artificial intelligence
-        to analyze skin images and provide dermatology-related insights for
-        informational purposes only.
-      </p>
-      <p>
-        The application may also facilitate chat-based consultations with licensed
-        medical professionals. All outputs are advisory and must not be used as a
-        substitute for professional diagnosis or treatment.
-      </p>
-    </section>
-
-    <section>
-      <h2>Medical Disclaimer</h2>
-      <p>
-        DermaLens AI is <strong>not a medical device</strong>. The application does not
-        diagnose, treat, cure, or prevent any disease.
-      </p>
-      <ul>
-        <li>AI outputs, overviews, symptoms, investigations, treatment options provided are informational only not to be mistaken for proper medical guidence</li>
-        <li>Predictions may be inaccurate or incomplete</li>
-        <li>Final medical decisions must be made by a qualified healthcare professional</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Legal & Compliance</h2>
-      <p>
-        By using the DermaLens AI application, you agree to our legal terms and data
-        handling practices.
-      </p>
-
-      <div class="links">
-        <a href="/privacy_policy.html">Privacy Policy</a>
-        <a href="/terms_of_service.html">Terms of Service</a>
+<!-- PROBLEM -->
+<section id="problem" class="bg-paper">
+  <div class="inner">
+    <p class="eyebrow">The Problem</p>
+    <h2>Skin care in India runs into the same wall, everywhere.</h2>
+    <p class="lede serif">Dermatologists are concentrated in a small number of cities. For most people, a skin concern means a long wait, a costly consultation, or — far more often — no consultation at all.</p>
+    <div class="grid-3">
+      <div class="card">
+        <h3>Geography</h3>
+        <p>Specialist dermatological care is concentrated in major metros, leaving smaller towns and rural areas with little direct access.</p>
       </div>
-    </section>
+      <div class="card">
+        <h3>Cost &amp; time</h3>
+        <p>An in-person specialist visit means booking, travel, and waiting — a high bar to clear for what might be a minor, easily-treated condition.</p>
+      </div>
+      <div class="card">
+        <h3>The fallback is worse</h3>
+        <p>Faced with that barrier, people default to internet search or self-diagnosis — with no clinical grounding and no path to a real doctor.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section>
-      <h2>Contact</h2>
-      <p>
-        <strong>Owner:</strong> Rathod Samir Sunilbhai<br />
-        <strong>Email:</strong> dermalensai@outlook.com<br />
-        <strong>Country:</strong> India
-      </p>
-    </section>
+<!-- HOW IT WORKS -->
+<section id="how-it-works" class="bg-blush">
+  <div class="inner">
+    <p class="eyebrow">How It Works</p>
+    <h2>A screening you can do in a minute — with a real doctor behind it.</h2>
+    <p class="lede serif">DermaLens AI turns a phone camera into a first opinion, and turns that first opinion into a conversation with a licensed doctor when it matters.</p>
+    <div class="flow">
+      <div class="flow-step"><p class="fn">01</p><h3>Capture</h3><p>Photograph the affected area — up to four angles for a clearer read.</p></div>
+      <div class="flow-step"><p class="fn">02</p><h3>Analyze</h3><p>The AI pipeline screens the image in seconds.</p></div>
+      <div class="flow-step"><p class="fn">03</p><h3>Understand</h3><p>A plain-language report explains what was found, and how confident the system is.</p></div>
+      <div class="flow-step"><p class="fn">04</p><h3>Consult</h3><p>Uncertain or concerning results route straight to a licensed doctor, in-app.</p></div>
+    </div>
+  </div>
+</section>
 
-  </main>
+<!-- TECHNOLOGY -->
+<section id="technology" class="bg-paper">
+  <div class="inner">
+    <p class="eyebrow">The Technology</p>
+    <h2>Built to know when it doesn't know.</h2>
+    <p class="lede serif">Most consumer skin-check tools are a single model returning a confident-sounding guess. DermaLens AI is a three-stage pipeline designed around the opposite instinct: validate the input, weigh two independent opinions, and hand off to a human when certainty runs out.</p>
+    <div class="pipeline">
+      <div class="pipe-stage">
+        <p class="stage-tag">Stage 1</p>
+        <h3>Input validation</h3>
+        <p>A vision model checks the photo is genuinely a skin image before any diagnosis runs — filtering out irrelevant or unusable uploads at the door.</p>
+      </div>
+      <div class="pipe-arrow" aria-hidden="true">&rarr;</div>
+      <div class="pipe-stage">
+        <p class="stage-tag">Stage 2</p>
+        <h3>Ensemble diagnosis</h3>
+        <p>Two independently trained classifiers score the image across ~35 dermatological conditions. Low-confidence results are returned as "uncertain," not forced into a guess.</p>
+      </div>
+      <div class="pipe-arrow" aria-hidden="true">&rarr;</div>
+      <div class="pipe-stage">
+        <p class="stage-tag">Stage 3</p>
+        <h3>Human escalation</h3>
+        <p>Flagged or uncertain cases are pushed straight to a licensed doctor's queue in real time — closing the loop from AI to clinician inside one product.</p>
+      </div>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><div class="big mono">~35</div><div class="lbl">Dermatological conditions screened</div></div>
+      <div class="stat"><div class="big mono">2</div><div class="lbl">Independently trained models</div></div>
+      <div class="stat"><div class="big">Live</div><div class="lbl">Doctor chat consultation, in-app</div></div>
+      <div class="stat"><div class="big">Android</div><div class="lbl">Available on Google Play</div></div>
+    </div>
+  </div>
+</section>
 
-  <footer>
-    © 2026 <strong>DermaLens AI</strong>. All rights reserved.
-  </footer>
+<!-- APP WALKTHROUGH -->
+<section class="bg-raised">
+  <div class="inner">
+    <p class="eyebrow">Inside the App</p>
+    <h2>From photo to conversation.</h2>
+    <div class="walk">
+      <div class="walk-item"><p class="wn">01</p><h3>Capture</h3><p>Guided camera flow, up to 4 photos of one spot.</p><span class="mode">Live</span></div>
+      <div class="walk-item"><p class="wn">02</p><h3>Analysis</h3><p>AI ensemble runs; results in seconds.</p><span class="mode">Live</span></div>
+      <div class="walk-item"><p class="wn">03</p><h3>Report</h3><p>Plain-language result, confidence, and next-step guidance.</p><span class="mode">Live</span></div>
+      <div class="walk-item"><p class="wn">04</p><h3>Doctor chat</h3><p>Real-time in-app text consultation with a licensed doctor.</p><span class="mode">Live</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PITCH DECK BANNER -->
+<section id="deck-banner" class="bg-ink">
+  <div class="inner">
+    <div class="copy">
+      <p class="eyebrow" style="color:var(--rose)">For Investors</p>
+      <h2>Curious about the business behind the app?</h2>
+      <p class="ink-muted">See the problem, the technology, our traction, and what we're raising — in one page.</p>
+    </div>
+    <div style="display:flex; gap:14px; flex-wrap:wrap;">
+      <a href="pitch-deck.html" class="btn btn-on-ink">View Pitch Deck &rarr;</a>
+      <a href="mailto:dermalensai@outlook.com" class="btn btn-on-ink-ghost">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- DISCLAIMER -->
+<section class="bg-blush">
+  <div class="inner-narrow">
+    <p class="eyebrow">Please Read</p>
+    <h2 style="font-size:26px;">Medical Disclaimer</h2>
+    <div class="disclaimer-card">
+      <p style="font-size:14.5px; color:var(--ink-muted);">DermaLens AI is an AI-assisted dermatology support platform providing informational skin analysis and doctor-assisted consultations. It complements, and does not replace, professional medical guidance.</p>
+      <ul>
+        <li>DermaLens AI is <strong>not a medical device</strong> and does not diagnose, treat, cure, or prevent any illness.</li>
+        <li>AI outputs, overviews, symptoms, investigations, and treatment options shown in the app are informational only.</li>
+        <li>Qualified healthcare professionals must make final medical decisions — always consult a doctor for diagnosis or treatment.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-paper">
+  <div class="inner">
+    <div class="col" style="max-width:320px;">
+      <a href="#hero" class="wordmark" style="margin-bottom:14px; display:inline-flex;">
+        <span class="mark" aria-hidden="true"></span>
+        <span class="wordmark-text">DermaLens AI</span>
+      </a>
+      <p style="font-size:13.5px; color:var(--ink-muted); line-height:1.6;">A first opinion for anyone, anywhere in India — and a real doctor when it counts.</p>
+    </div>
+    <div class="col">
+      <h4>Product</h4>
+      <a href="#how-it-works">How it works</a>
+      <a href="#technology">Technology</a>
+      <a href="pitch-deck.html">Pitch Deck</a>
+      <a href="https://play.google.com/store/apps/details?id=com.dermalens.ai">Get the App</a>
+    </div>
+    <div class="col">
+      <h4>Legal</h4>
+      <a href="privacy_policy.html">Privacy Policy</a>
+      <a href="terms_of_service.html">Terms of Service</a>
+      <a href="delete_account.html">Delete Account</a>
+    </div>
+    <div class="col">
+      <h4>Contact</h4>
+      <p>IATROVISION Technologies Pvt. Ltd.</p>
+      <a href="mailto:dermalensai@outlook.com">dermalensai@outlook.com</a>
+      <p>Surat, Gujarat, India</p>
+    </div>
+  </div>
+  <div class="bottom">
+    <span>&copy; 2026 IATROVISION Technologies Private Limited. All rights reserved.</span>
+    <span class="mono">CIN U62099GJ2026PTC178696</span>
+  </div>
+</footer>
+
+<script>
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  toggle.addEventListener('click', function () {
+    links.classList.toggle('open');
+  });
+  links.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () { links.classList.remove('open'); });
+  });
+</script>
 
 </body>
 </html>

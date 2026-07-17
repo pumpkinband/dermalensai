@@ -1,361 +1,339 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Privacy Policy – DermaLens AI</title>
+<meta charset="utf-8" />
+<title>Privacy Policy — DermaLens AI</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="How DermaLens AI collects, uses, stores, and protects your information." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%23E9B5B2'/%3E%3Ccircle cx='50' cy='50' r='28' fill='none' stroke='%23241C1B' stroke-width='3' opacity='.35'/%3E%3Ccircle cx='50' cy='50' r='10' fill='%23241C1B' opacity='.55'/%3E%3C/svg%3E" />
+<style>
+  :root{
+    --rose:#E9B5B2; --rose-deep:#C48D8A; --blush:#F7E7E5;
+    --ink:#241C1B; --ink-muted:#6B5F5D; --paper:#FBF9F8; --paper-raised:#FFFFFF;
+    --line:#E8DEDC;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --rose:#EFC3C0; --rose-deep:#D89E9B; --blush:#2E2321; --ink:#F3ECEA; --ink-muted:#B8A9A6; --paper:#1F1918; --paper-raised:#241D1B; --line:#3A2E2C; }
+  }
+  :root[data-theme="dark"]{ --rose:#EFC3C0; --rose-deep:#D89E9B; --blush:#2E2321; --ink:#F3ECEA; --ink-muted:#B8A9A6; --paper:#1F1918; --paper-raised:#241D1B; --line:#3A2E2C; }
+  :root[data-theme="light"]{ --rose:#E9B5B2; --rose-deep:#C48D8A; --blush:#F7E7E5; --ink:#241C1B; --ink-muted:#6B5F5D; --paper:#FBF9F8; --paper-raised:#FFFFFF; --line:#E8DEDC; }
 
-  <style>
-    :root {
-      --text: #ff9999;
-      --background: #fbfbfe;
-      --primary: #E9B5B2;
-      --secondary: #F3D3CF;
-      --accent: #F7E7E5;
-    }
+  *{ box-sizing:border-box; }
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif; -webkit-font-smoothing:antialiased; }
+  a{ color:inherit; }
+  .serif{ font-family:"Iowan Old Style","Palatino Linotype",Georgia,"Times New Roman",serif; }
+  .mono{ font-family:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace; }
 
-    body {
-      margin: 0;
-      padding: 0;
-      background: var(--background);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      color: #333;
-      line-height: 1.7;
-    }
+  .btn{ display:inline-flex; align-items:center; gap:8px; font-size:14px; font-weight:700; padding:12px 20px; border-radius:8px; text-decoration:none; border:1.5px solid transparent; }
+  .btn-primary{ background:var(--ink); color:var(--paper); }
+  .btn-ghost{ background:transparent; color:var(--ink); border-color:rgba(36,28,27,.3); }
 
-    header {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      padding: 2.5rem 1.5rem;
-      text-align: center;
-    }
+  .nav{ position:sticky; top:0; z-index:40; background:color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+  .nav-inner{ max-width:820px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .wordmark{ display:flex; align-items:center; gap:10px; text-decoration:none; }
+  .mark{ width:24px; height:24px; border-radius:50%; background:var(--rose); position:relative; flex-shrink:0; }
+  .mark::before{ content:""; position:absolute; inset:5px; border-radius:50%; border:1.5px solid var(--ink); opacity:.4; }
+  .mark::after{ content:""; position:absolute; inset:9px; border-radius:50%; background:var(--ink); opacity:.55; }
+  .wordmark-text{ font-weight:800; font-size:15px; color:var(--ink); }
 
-    header h1 {
-      color: #fff;
-      margin: 0;
-    }
+  header.doc-header{ background:var(--blush); padding:64px 24px 48px; }
+  header.doc-header .inner{ max-width:820px; margin:0 auto; }
+  .eyebrow{ font-size:11.5px; font-weight:800; text-transform:uppercase; letter-spacing:.14em; margin:0 0 16px; display:flex; align-items:center; gap:10px; color:var(--rose-deep); }
+  .eyebrow::before{ content:""; width:22px; height:2px; background:currentColor; display:inline-block; }
+  header.doc-header h1{ font-size:clamp(32px,5vw,48px); font-weight:800; letter-spacing:-.02em; margin:0 0 14px; }
+  header.doc-header .updated{ font-size:13.5px; color:var(--ink-muted); }
+  header.doc-header .intro{ margin-top:24px; font-size:16px; line-height:1.65; color:var(--ink-muted); max-width:64ch; }
+  header.doc-header .intro strong{ color:var(--ink); }
 
-    main {
-      max-width: 900px;
-      margin: 2.5rem auto;
-      padding: 0 1.5rem;
-    }
+  article{ max-width:820px; margin:0 auto; padding:56px 24px 96px; }
+  .legal-section{ display:grid; grid-template-columns:56px 1fr; gap:20px; padding:32px 0; border-top:1px solid var(--line); }
+  .legal-section:first-child{ border-top:none; padding-top:0; }
+  .legal-num{ font-size:13px; font-weight:700; color:var(--rose-deep); padding-top:3px; }
+  .legal-section h2{ font-size:20px; font-weight:800; letter-spacing:-.01em; margin:0 0 14px; }
+  .legal-section h3{ font-size:15px; font-weight:700; margin:22px 0 8px; color:var(--ink); }
+  .legal-section h3:first-of-type{ margin-top:0; }
+  .legal-section p{ font-size:15px; line-height:1.7; color:var(--ink-muted); margin:0 0 12px; }
+  .legal-section p:last-child{ margin-bottom:0; }
+  .legal-section ul{ margin:0 0 14px; padding-left:20px; }
+  .legal-section li{ font-size:15px; line-height:1.7; color:var(--ink-muted); margin-bottom:6px; }
+  .legal-section strong{ color:var(--ink); }
+  .callout{ background:var(--paper-raised); border:1px solid var(--line); border-radius:8px; padding:16px 18px; font-size:14px; line-height:1.65; color:var(--ink-muted); margin:12px 0; }
+  .callout strong{ color:var(--ink); }
+  table.safety{ width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px; }
+  table.safety th, table.safety td{ text-align:left; padding:10px 12px; border:1px solid var(--line); color:var(--ink-muted); vertical-align:top; }
+  table.safety th{ color:var(--ink); font-weight:700; background:var(--paper-raised); }
 
-    section {
-      background: #fff;
-      padding: 2rem;
-      border-radius: 12px;
-      border: 1px solid var(--accent);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.04);
-    }
-
-    h2 {
-      color: var(--text);
-      margin-top: 1.5rem;
-    }
-
-    pre {
-      white-space: pre-wrap;
-      word-wrap: break-word;
-      font-family: inherit;
-      font-size: 0.95rem;
-    }
-
-    footer {
-      background: var(--accent);
-      text-align: center;
-      padding: 1.2rem;
-      font-size: 0.85rem;
-      color: #555;
-      margin-top: 3rem;
-    }
-  </style>
+  footer{ padding:40px 24px 56px; border-top:1px solid var(--line); }
+  footer .inner{ max-width:820px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px; font-size:13px; color:var(--ink-muted); }
+  footer a{ text-decoration:none; margin-right:18px; color:var(--ink-muted); }
+  footer a:hover{ color:var(--ink); }
+</style>
 </head>
-
 <body>
 
-<header>
-  <h1>Privacy Policy</h1>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="wordmark">
+      <span class="mark" aria-hidden="true"></span>
+      <span class="wordmark-text">DermaLens AI</span>
+    </a>
+    <div style="display:flex; gap:10px;">
+      <a href="terms_of_service.html" class="btn btn-ghost">Terms of Service</a>
+      <a href="index.html" class="btn btn-primary">Back to Home</a>
+    </div>
+  </div>
+</nav>
+
+<header class="doc-header">
+  <div class="inner">
+    <p class="eyebrow">Legal</p>
+    <h1>Privacy Policy</h1>
+    <p class="updated mono">Last updated: 20 February 2026</p>
+    <p class="intro">DermaLens AI ("we", "our", "us") is operated by <strong>IATROVISION Technologies Private Limited</strong> (CIN: U62099GJ2026PTC178696), India. This Privacy Policy explains how we collect, use, store, share, and protect information when you use the DermaLens AI mobile application and related services ("App", "Service"). By accessing or using the App, you agree to this Privacy Policy.</p>
+  </div>
 </header>
 
-<main>
-  <section>
-<pre>
-Privacy Policy
-
-DermaLens AI
-
-Last updated: 20 February 2026
-
-DermaLens AI (“we”, “our”, “us”) is operated by RATHOD SAMIR SUNILBHAI, India.
-This Privacy Policy explains how we collect, use, store, share, and protect information when you use the DermaLens AI mobile application and related services (“App”, “Service”).
-
-By accessing or using the App, you agree to this Privacy Policy.
-
-1. Information We Collect
-1.1 Personal Information
-
-We may collect limited personal information, including:
-
-Email address
-
-Phone number
-
-Authentication identifiers (e.g., Firebase UID)
-
-Login method (Google sign-in, email/password, phone OTP, or anonymous guest)
-
-We do not collect personal profile details such as age, gender, address, or government identification numbers.
-
-1.2 Medical & Health-Related Information
-
-To provide AI-assisted dermatology information, we may collect:
-
-Skin images/photos uploaded by users
-
-Health-related descriptions or symptoms
-
-Chat messages exchanged with doctors on the platform
-
-This information is treated as Sensitive Personal Data under the Information Technology Act, 2000 (India) and Special Category Personal Data under GDPR.
-
-1.3 AI Processing Information
-
-Uploaded images and inputs are processed by AI models to generate dermatology-related insights
-
-AI outputs are provided for informational purposes only
-
-AI outputs do not constitute a confirmed or final medical assessment
-
-1.4 Usage & Analytics Information
-
-We automatically collect limited technical data such as:
-
-App usage patterns
-
-Device and performance information
-
-Crash and error logs
-
-This data is collected using Firebase Analytics to improve app stability, safety, and performance.
-
-1.5 Data Safety
-
-We take data safety and transparency seriously. The following summarizes key details you will also see in the Google Play Data Safety section:
-
-- Photos and videos (skin images): Collected — Purpose: AI inference and doctor consultation; Shared with: platform doctors, Replit, and Neon for storage and processing; Encrypted in transit: Yes (TLS); Encrypted at rest: Yes; Retention: 90 days by default unless the user requests earlier deletion.
-- Health & fitness data (symptoms, health descriptions, chat messages): Collected — Purpose: consultation and medical recordkeeping; Shared with: platform doctors, Replit, and Neon; Encrypted in transit: Yes; Encrypted at rest: Yes; Retention: 90 days unless otherwise required by law.
-- Identifiers (Firebase UID, device identifiers): Collected — Purpose: authentication, fraud prevention, and analytics; Shared with: Firebase and analytics providers; Encrypted in transit: Yes; Encrypted at rest: Yes; Retention: as required to operate the service.
-- Crash and diagnostics (logs): Collected — Purpose: app stability and debugging; Shared with: Firebase (Crashlytics) for diagnostics; Encrypted in transit: Yes; Encrypted at rest: Yes; Retention: per provider default.
-
-Third-party processing partners and links:
-
-- Firebase (Google): https://firebase.google.com/support/privacy
-- Replit: https://replit.com/privacy-policy
-- Neon: https://neon.com/privacy-policy
-
-By uploading images or providing health information you explicitly consent to the processing of Sensitive Personal Data for the purposes described above. You may withdraw consent and request deletion as described in the "Data Retention" and "Contact" sections below.
-
-Data retention and deletion process
-
-Images and consultation records are retained for 90 days after last access by default. You can request deletion at any time. To request deletion outside the app, email dermalensai@outlook.com with your account UID; we will verify identity and complete deletion or anonymization within 30 days of a verified request. Deletion requests submitted from the in-app 'Delete Account' flow are treated as verified and should be actioned within 30 days.
-
-Age verification and minors
-
-The App is intended for users aged 18 and over and relies on self-declaration at account creation. If we become aware of an account used by a person under 18, we will suspend the account and provide instructions to have data removed upon verified parental/guardian request.
-
-Not a medical device
-
-The App and its AI functionality are not medical devices. All AI outputs are informational only and are not intended for clinical use or as the sole basis for medical decisions.
-
-2. How We Use Your Information
-
-We use collected information to:
-
-Authenticate users and manage accounts
-
-Provide AI-assisted skin analysis and information
-
-Enable chat-based consultations with doctors
-
-Improve app functionality and user experience
-
-Maintain security and prevent misuse
-
-Comply with applicable legal and regulatory obligations
-
-3. Legal Basis for Processing (GDPR)
-
-We process personal data based on:
-
-Explicit user consent
-
-Performance of services requested by the user
-
-Legitimate interests, such as improving safety and functionality
-
-Legal compliance under applicable laws
-
-4. Medical Disclaimer
-
-DermaLens AI provides AI-assisted dermatology insights for informational purposes only.
-
-AI outputs are not a substitute for professional medical advice
-
-AI predictions may be inaccurate, incomplete, or delayed
-
-Users should consult a qualified dermatologist or medical professional before making any medical decisions
-
-Medical decisions and outcomes remain the responsibility of the user and the treating medical professional.
-For legal terms and limitations of liability, please refer to the Terms of Service.
-
-5. Medication Information Disclaimer (Prescription & OTC)
-
-5.1 Prescription-Only Drugs
-
-The App may display medications or treatments marked as “DOCTOR’S PRESCRIPTION ONLY (INFORMATIVE).”
-
-- Such information is strictly educational
-- The App does not prescribe medications
-- Display of a drug does not constitute a medical prescription
-- Prescription medicines must be used only under supervision of a qualified medical practitioner
-
-5.2 Over-The-Counter (OTC) Drugs
-
-The App may display information about certain medications that are commonly available as Over-The-Counter (OTC) drugs.
-
-You acknowledge and agree that:
-- OTC drug information is provided only for general awareness and education
-- Availability without prescription does not mean the drug is safe for everyone
-- You must check whether you are allergic, sensitive, or contraindicated to any medication before use
-- You should read the drug label, warnings, and instructions carefully
-- If you have any medical condition, are pregnant, breastfeeding, or taking other medicines, you must consult a qualified medical professional before using any OTC drug
-
-DermaLens AI does not assume responsibility for allergic reactions, side effects, misuse, or adverse outcomes arising from OTC drug use.
-
-6. Data Storage & Security
-
-6.1 Storage Infrastructure
-
-Your data is stored using secure cloud infrastructure, including:
-
-Firebase – authentication and analytics
-
-Replit – backend services and hosting
-
-Neon – database services and storage
-
-Data may be stored on servers located outside India, subject to applicable data protection laws.
-
-6.2 Security Measures
-
-We use reasonable security practices, including:
-
-Encrypted data transmission
-
-Secure authentication mechanisms
-
-Role-based access controls
-
-No method of transmission or storage is completely secure, and absolute security cannot be guaranteed.
-
-Encryption at rest: Data stored by our cloud providers is protected using industry-standard encryption at rest in addition to TLS in transit. Where we control storage configuration, we ensure encryption-at-rest is enabled.
-
-7. Data Sharing
-
-We may share data only in the following circumstances:
-
-With doctors on the platform, for consultation purposes
-
-With service providers (Firebase, Replit, and Neon) for infrastructure and analytics
-
-With legal authorities, if required by law or government request
-
-We do not sell personal or medical data to third parties.
-
-8. Payments (Future Provision)
-
-Currently, DermaLens AI does not process payments.
-If payment features are introduced in the future:
-
-Secure and compliant payment gateways will be used
-
-This Privacy Policy will be updated accordingly
-
-9. User Rights
-9.1 GDPR Rights
-
-You have the right to:
-
-Access your personal data
-
-Correct inaccurate data
-
-Request deletion of your data
-
-Restrict or object to processing
-
-Withdraw consent at any time
-
-9.2 Indian IT Act Rights
-
-Under the Information Technology Act, 2000 and IT (Reasonable Security Practices and Sensitive Personal Data) Rules, 2011, you may:
-
-Review and correct your information
-
-Withdraw consent by discontinuing use of the App
-
-Requests can be made by contacting:
-📧 dermalensai@outlook.com
-
-Account deletion via app: You can request deletion from the app by using the 'Delete Account' option available under your Profile. Requests submitted via the app are processed as verified deletion requests. If you cannot access the app, contact us at the email above and include your account UID.
-
-10. Data Retention
-
-Data is retained only as long as necessary to provide services, comply with legal obligations, or resolve disputes
-
-Upon account deletion, data is deleted or anonymized unless retention is required by law
-
-11. Age Restriction & Guardian Use
-
-DermaLens AI is intended for users aged 18 years and above.
-
-We do not knowingly allow users below 18 to create independent accounts
-
-If information or assistance is required for a person below 18 years of age, the App may be used only by a parent or legal guardian who is 18 years or older
-
-In such cases, the parent or legal guardian must:
-
-Log in using their own account
-
-Upload images and information on behalf of the minor
-
-Provide consent for data processing
-
-Assume full responsibility for use of the App and reliance on its content
-
-12. Third-Party Links
-
-The App may contain links to third-party services.
-We are not responsible for the privacy practices of those third parties.
-
-13. Changes to This Privacy Policy
-
-We may update this Privacy Policy from time to time.
-Changes will be reflected within the App, and continued use constitutes acceptance of the updated policy.
-
-14. Contact Information
-
-Owner: RATHOD SAMIR SUNILBHAI
-App Name: DermaLens AI
-Email: dermalensai@outlook.com
-
-Country: India
-</pre>
-  </section>
-</main>
+<article>
+
+  <div class="legal-section">
+    <div class="legal-num mono">01</div>
+    <div>
+      <h2>Information We Collect</h2>
+
+      <h3>1.1 Personal Information</h3>
+      <p>We may collect limited personal information, including:</p>
+      <ul>
+        <li>Email address</li>
+        <li>Phone number</li>
+        <li>Authentication identifiers (e.g., Firebase UID)</li>
+        <li>Login method (Google sign-in, email/password, phone OTP, or anonymous guest)</li>
+      </ul>
+      <p>We do not collect personal profile details such as age, gender, address, or government identification numbers.</p>
+
+      <h3>1.2 Medical &amp; Health-Related Information</h3>
+      <p>To provide AI-assisted dermatology information, we may collect:</p>
+      <ul>
+        <li>Skin images/photos uploaded by users</li>
+        <li>Health-related descriptions or symptoms</li>
+        <li>Chat messages exchanged with doctors on the platform</li>
+      </ul>
+      <p>This information is treated as Sensitive Personal Data under the Information Technology Act, 2000 (India) and Special Category Personal Data under GDPR.</p>
+
+      <h3>1.3 AI Processing Information</h3>
+      <ul>
+        <li>Uploaded images and inputs are processed by AI models to generate dermatology-related insights</li>
+        <li>AI outputs are provided for informational purposes only</li>
+        <li>AI outputs do not constitute a confirmed or final medical assessment</li>
+      </ul>
+
+      <h3>1.4 Usage &amp; Analytics Information</h3>
+      <p>We automatically collect limited technical data such as app usage patterns, device and performance information, and crash and error logs. This data is collected using Firebase Analytics to improve app stability, safety, and performance.</p>
+
+      <h3>1.5 Data Safety</h3>
+      <p>We take data safety and transparency seriously. The following summarizes key details you will also see in the Google Play Data Safety section:</p>
+      <div style="overflow-x:auto;">
+      <table class="safety">
+        <tr><th>Data type</th><th>Purpose</th><th>Shared with</th><th>Retention</th></tr>
+        <tr><td>Photos &amp; videos (skin images)</td><td>AI inference and doctor consultation</td><td>Platform doctors, Replit, Neon</td><td>90 days by default</td></tr>
+        <tr><td>Health &amp; fitness data (symptoms, chat messages)</td><td>Consultation and medical recordkeeping</td><td>Platform doctors, Replit, Neon</td><td>90 days unless required otherwise by law</td></tr>
+        <tr><td>Identifiers (Firebase UID, device ID)</td><td>Authentication, fraud prevention, analytics</td><td>Firebase and analytics providers</td><td>As required to operate the service</td></tr>
+        <tr><td>Crash &amp; diagnostics (logs)</td><td>App stability and debugging</td><td>Firebase (Crashlytics)</td><td>Per provider default</td></tr>
+      </table>
+      </div>
+      <p>All data above is encrypted in transit (TLS) and at rest.</p>
+      <p>Third-party processing partners: <a href="https://firebase.google.com/support/privacy" style="color:var(--rose-deep);">Firebase (Google)</a>, <a href="https://replit.com/privacy-policy" style="color:var(--rose-deep);">Replit</a>, <a href="https://neon.com/privacy-policy" style="color:var(--rose-deep);">Neon</a>.</p>
+      <div class="callout"><strong>Consent.</strong> By uploading images or providing health information you explicitly consent to the processing of Sensitive Personal Data for the purposes described above. You may withdraw consent and request deletion as described in "Data Retention" and "Contact" below.</div>
+
+      <h3>Data retention and deletion process</h3>
+      <p>Images and consultation records are retained for 90 days after last access by default. You can request deletion at any time. To request deletion outside the app, email <a href="mailto:dermalensai@outlook.com" style="color:var(--rose-deep);">dermalensai@outlook.com</a> with your account UID; we will verify identity and complete deletion or anonymization within 30 days of a verified request. Deletion requests submitted from the in-app <strong>Delete Account</strong> flow are treated as verified and should be actioned within 30 days.</p>
+
+      <h3>Age verification and minors</h3>
+      <p>The App is intended for users aged 18 and over and relies on self-declaration at account creation. If we become aware of an account used by a person under 18, we will suspend the account and provide instructions to have data removed upon verified parental/guardian request.</p>
+
+      <h3>Not a medical device</h3>
+      <p>The App and its AI functionality are not medical devices. All AI outputs are informational only and are not intended for clinical use or as the sole basis for medical decisions.</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-num mono">02</div>
+    <div>
+      <h2>How We Use Your Information</h2>
+      <p>We use collected information to:</p>
+      <ul>
+        <li>Authenticate users and manage accounts</li>
+        <li>Provide AI-assisted skin analysis and information</li>
+        <li>Enable chat-based consultations with doctors</li>
+        <li>Improve app functionality and user experience</li>
+        <li>Maintain security and prevent misuse</li>
+        <li>Comply with applicable legal and regulatory obligations</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-num mono">03</div>
+    <div>
+      <h2>Legal Basis for Processing (GDPR)</h2>
+      <p>We process personal data based on:</p>
+      <ul>
+        <li>Explicit user consent</li>
+        <li>Performance of services requested by the user</li>
+        <li>Legitimate interests, such as improving safety and functionality</li>
+        <li>Legal compliance under applicable laws</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-num mono">04</div>
+    <div>
+      <h2>Medical Disclaimer</h2>
+      <p>DermaLens AI provides AI-assisted dermatology insights for informational purposes only.</p>
+      <ul>
+        <li>AI outputs are not a substitute for professional medical advice</li>
+        <li>AI predictions may be inaccurate, incomplete, or delayed</li>
+        <li>Users should consult a qualified dermatologist or medical professional before making any medical decisions</li>
+      </ul>
+      <p>Medical decisions and outcomes remain the responsibility of the user and the treating medical professional. For legal terms and limitations of liability, please refer to the <a href="terms_of_service.html" style="color:var(--rose-deep);">Terms of Service</a>.</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-num mono">05</div>
+    <div>
+      <h2>Medication Information Disclaimer (Prescription &amp; OTC)</h2>
+      <h3>5.1 Prescription-Only Drugs</h3>
+      <p>The App may display medications or treatments marked as "DOCTOR'S PRESCRIPTION ONLY (INFORMATIVE)."</p>
+      <ul>
+        <li>Such information is strictly educational</li>
+        <li>The App does not prescribe medications</li>
+        <li>Display of a drug does not constitute a medical prescription</li>
+        <li>Prescription medicines must be used only under supervision of a qualified medical practitioner</li>
+      </ul>
+      <h3>5.2 Over-The-Counter (OTC) Drugs</h3>
+      <p>The App may display information about certain medications that are commonly available as Over-The-Counter (OTC) drugs. You acknowledge and agree that:</p>
+      <ul>
+        <li>OTC drug information is provided only for general awareness and education</li>
+        <li>Availability without prescription does not mean the drug is safe for everyone</li>
+        <li>You must check whether you are allergic, sensitive, or contraindicated to any medication before use</li>
+        <li>You should read the drug label, warnings, and instructions carefully</li>
+        <li>If you have any medical condition, are pregnant, breastfeeding, or taking other medicines, you must consult a qualified medical professional before using any OTC drug</li>
+      </ul>
+      <p>DermaLens AI does not assume responsibility for allergic reactions, side effects, misuse, or adverse outcomes arising from OTC drug use.</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-num mono">06</div>
+    <div>
+      <h2>Data Storage &amp; Security</h2>
+      <h3>6.1 Storage Infrastructure</h3>
+      <p>Your data is stored using secure cloud infrastructure, including Firebase (authentication and analytics) and Replit and Neon (backend services, chat data, and storage). Data may be stored on servers located outside India, subject to applicable data protection laws.</p>
+      <h3>6.2 Security Measures</h3>
+      <p>We use reasonable security practices, including encrypted data transmission, secure authentication mechanisms, and role-based access controls. No method of transmission or storage is completely secure, and absolute security cannot be guaranteed.</p>
+      <p>Encryption at rest: Data stored by our cloud providers is protected using industry-standard encryption at rest in addition to TLS in transit. Where we control storage configuration, we ensure encryption-at-rest is enabled.</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-num mono">07</div>
+    <div>
+      <h2>Data Sharing</h2>
+      <p>We may share data only in the following circumstances:</p>
+      <ul>
+        <li>With doctors on the platform, for consultation purposes</li>
+        <li>With service providers (Firebase, Replit, and Neon) for infrastructure and analytics</li>
+        <li>With legal authorities, if required by law or government request</li>
+      </ul>
+      <p><strong>We do not sell personal or medical data to third parties.</strong></p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-num mono">08</div>
+    <div>
+      <h2>Payments (Future Provision)</h2>
+      <p>Currently, DermaLens AI does not process payments. If payment features are introduced in the future, secure and compliant payment gateways will be used and this Privacy Policy will be updated accordingly.</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-num mono">09</div>
+    <div>
+      <h2>User Rights</h2>
+      <h3>9.1 GDPR Rights</h3>
+      <p>You have the right to: access your personal data, correct inaccurate data, request deletion of your data, restrict or object to processing, and withdraw consent at any time.</p>
+      <h3>9.2 Indian IT Act Rights</h3>
+      <p>Under the Information Technology Act, 2000 and IT (Reasonable Security Practices and Sensitive Personal Data) Rules, 2011, you may review and correct your information, and withdraw consent by discontinuing use of the App.</p>
+      <p>Requests can be made by contacting <a href="mailto:dermalensai@outlook.com" style="color:var(--rose-deep);">dermalensai@outlook.com</a>.</p>
+      <p><strong>Account deletion via app:</strong> You can request deletion from the app using the <strong>Delete Account</strong> option under your Profile. Requests submitted via the app are processed as verified deletion requests. If you cannot access the app, contact us at the email above and include your account UID.</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-num mono">10</div>
+    <div>
+      <h2>Data Retention</h2>
+      <p>Data is retained only as long as necessary to provide services, comply with legal obligations, or resolve disputes. Upon account deletion, data is deleted or anonymized unless retention is required by law.</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-num mono">11</div>
+    <div>
+      <h2>Age Restriction &amp; Guardian Use</h2>
+      <p>DermaLens AI is intended for users aged 18 years and above. We do not knowingly allow users below 18 to create independent accounts. If information or assistance is required for a person below 18 years of age, the App may be used only by a parent or legal guardian who is 18 years or older. In such cases, the parent or legal guardian must:</p>
+      <ul>
+        <li>Log in using their own account</li>
+        <li>Upload images and information on behalf of the minor</li>
+        <li>Provide consent for data processing</li>
+        <li>Assume full responsibility for use of the App and reliance on its content</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-num mono">12</div>
+    <div>
+      <h2>Third-Party Links</h2>
+      <p>The App may contain links to third-party services. We are not responsible for the privacy practices of those third parties.</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-num mono">13</div>
+    <div>
+      <h2>Changes to This Privacy Policy</h2>
+      <p>We may update this Privacy Policy from time to time. Changes will be reflected within the App, and continued use constitutes acceptance of the updated policy.</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-num mono">14</div>
+    <div>
+      <h2>Contact Information</h2>
+      <p><strong>Owner:</strong> IATROVISION Technologies Private Limited<br/>
+      <strong>CIN:</strong> U62099GJ2026PTC178696<br/>
+      <strong>App Name:</strong> DermaLens AI<br/>
+      <strong>Email:</strong> <a href="mailto:dermalensai@outlook.com" style="color:var(--rose-deep);">dermalensai@outlook.com</a></p>
+      <p><strong>Registered Address:</strong> C-117, Balaji Krupa Society, Palanpur Road, Navyug College, Surat, Gujarat 395009, India<br/>
+      <strong>Country:</strong> India</p>
+    </div>
+  </div>
+
+</article>
 
 <footer>
-  © 2026 DermaLens AI
+  <div class="inner">
+    <div>
+      <a href="index.html">Home</a>
+      <a href="terms_of_service.html">Terms of Service</a>
+      <a href="delete_account.html">Delete Account</a>
+      <a href="pitch-deck.html">Pitch Deck</a>
+    </div>
+    <span>&copy; 2026 IATROVISION Technologies Private Limited.</span>
+  </div>
 </footer>
 
 </body>

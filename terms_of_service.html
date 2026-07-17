@@ -1,297 +1,294 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Terms of Service – DermaLens AI</title>
+<meta charset="utf-8" />
+<title>Terms of Service — DermaLens AI</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="The terms governing your access to and use of the DermaLens AI mobile application." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%23E9B5B2'/%3E%3Ccircle cx='50' cy='50' r='28' fill='none' stroke='%23241C1B' stroke-width='3' opacity='.35'/%3E%3Ccircle cx='50' cy='50' r='10' fill='%23241C1B' opacity='.55'/%3E%3C/svg%3E" />
+<style>
+  :root{
+    --rose:#E9B5B2; --rose-deep:#C48D8A; --blush:#F7E7E5;
+    --ink:#241C1B; --ink-muted:#6B5F5D; --paper:#FBF9F8; --paper-raised:#FFFFFF;
+    --line:#E8DEDC;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --rose:#EFC3C0; --rose-deep:#D89E9B; --blush:#2E2321; --ink:#F3ECEA; --ink-muted:#B8A9A6; --paper:#1F1918; --paper-raised:#241D1B; --line:#3A2E2C; }
+  }
+  :root[data-theme="dark"]{ --rose:#EFC3C0; --rose-deep:#D89E9B; --blush:#2E2321; --ink:#F3ECEA; --ink-muted:#B8A9A6; --paper:#1F1918; --paper-raised:#241D1B; --line:#3A2E2C; }
+  :root[data-theme="light"]{ --rose:#E9B5B2; --rose-deep:#C48D8A; --blush:#F7E7E5; --ink:#241C1B; --ink-muted:#6B5F5D; --paper:#FBF9F8; --paper-raised:#FFFFFF; --line:#E8DEDC; }
 
-  <style>
-    :root {
-      --text: #ff9999;
-      --background: #fbfbfe;
-      --primary: #E9B5B2;
-      --secondary: #F3D3CF;
-      --accent: #F7E7E5;
-    }
+  *{ box-sizing:border-box; }
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif; -webkit-font-smoothing:antialiased; }
+  a{ color:inherit; }
+  .mono{ font-family:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace; }
 
-    body {
-      margin: 0;
-      padding: 0;
-      background: var(--background);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      color: #333;
-      line-height: 1.7;
-    }
+  .btn{ display:inline-flex; align-items:center; gap:8px; font-size:14px; font-weight:700; padding:12px 20px; border-radius:8px; text-decoration:none; border:1.5px solid transparent; }
+  .btn-primary{ background:var(--ink); color:var(--paper); }
+  .btn-ghost{ background:transparent; color:var(--ink); border-color:rgba(36,28,27,.3); }
 
-    header {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      padding: 2.5rem 1.5rem;
-      text-align: center;
-    }
+  .nav{ position:sticky; top:0; z-index:40; background:color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+  .nav-inner{ max-width:820px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .wordmark{ display:flex; align-items:center; gap:10px; text-decoration:none; }
+  .mark{ width:24px; height:24px; border-radius:50%; background:var(--rose); position:relative; flex-shrink:0; }
+  .mark::before{ content:""; position:absolute; inset:5px; border-radius:50%; border:1.5px solid var(--ink); opacity:.4; }
+  .mark::after{ content:""; position:absolute; inset:9px; border-radius:50%; background:var(--ink); opacity:.55; }
+  .wordmark-text{ font-weight:800; font-size:15px; color:var(--ink); }
 
-    header h1 {
-      color: #fff;
-      margin: 0;
-    }
+  header.doc-header{ background:var(--blush); padding:64px 24px 48px; }
+  header.doc-header .inner{ max-width:820px; margin:0 auto; }
+  .eyebrow{ font-size:11.5px; font-weight:800; text-transform:uppercase; letter-spacing:.14em; margin:0 0 16px; display:flex; align-items:center; gap:10px; color:var(--rose-deep); }
+  .eyebrow::before{ content:""; width:22px; height:2px; background:currentColor; display:inline-block; }
+  header.doc-header h1{ font-size:clamp(32px,5vw,48px); font-weight:800; letter-spacing:-.02em; margin:0 0 14px; }
+  header.doc-header .updated{ font-size:13.5px; color:var(--ink-muted); }
+  header.doc-header .intro{ margin-top:24px; font-size:16px; line-height:1.65; color:var(--ink-muted); max-width:64ch; }
+  header.doc-header .intro strong{ color:var(--ink); }
 
-    main {
-      max-width: 900px;
-      margin: 2.5rem auto;
-      padding: 0 1.5rem;
-    }
+  article{ max-width:820px; margin:0 auto; padding:56px 24px 96px; }
+  .legal-section{ display:grid; grid-template-columns:56px 1fr; gap:20px; padding:32px 0; border-top:1px solid var(--line); }
+  .legal-section:first-child{ border-top:none; padding-top:0; }
+  .legal-num{ font-size:13px; font-weight:700; color:var(--rose-deep); padding-top:3px; }
+  .legal-section h2{ font-size:20px; font-weight:800; letter-spacing:-.01em; margin:0 0 14px; }
+  .legal-section h3{ font-size:15px; font-weight:700; margin:22px 0 8px; color:var(--ink); }
+  .legal-section h3:first-of-type{ margin-top:0; }
+  .legal-section p{ font-size:15px; line-height:1.7; color:var(--ink-muted); margin:0 0 12px; }
+  .legal-section p:last-child{ margin-bottom:0; }
+  .legal-section ul{ margin:0 0 14px; padding-left:20px; }
+  .legal-section li{ font-size:15px; line-height:1.7; color:var(--ink-muted); margin-bottom:6px; }
+  .legal-section strong{ color:var(--ink); }
+  .callout{ background:var(--paper-raised); border:1px solid var(--line); border-radius:8px; padding:16px 18px; font-size:14px; line-height:1.65; color:var(--ink-muted); margin:12px 0; }
+  .callout strong{ color:var(--ink); }
 
-    section {
-      background: #fff;
-      padding: 2rem;
-      border-radius: 12px;
-      border: 1px solid var(--accent);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.04);
-    }
-
-    pre {
-      white-space: pre-wrap;
-      word-wrap: break-word;
-      font-family: inherit;
-      font-size: 0.95rem;
-    }
-
-    footer {
-      background: var(--accent);
-      text-align: center;
-      padding: 1.2rem;
-      font-size: 0.85rem;
-      color: #555;
-      margin-top: 3rem;
-    }
-  </style>
+  footer{ padding:40px 24px 56px; border-top:1px solid var(--line); }
+  footer .inner{ max-width:820px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px; font-size:13px; color:var(--ink-muted); }
+  footer a{ text-decoration:none; margin-right:18px; color:var(--ink-muted); }
+  footer a:hover{ color:var(--ink); }
+</style>
 </head>
-
 <body>
 
-<header>
-  <h1>Terms of Service</h1>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="wordmark">
+      <span class="mark" aria-hidden="true"></span>
+      <span class="wordmark-text">DermaLens AI</span>
+    </a>
+    <div style="display:flex; gap:10px;">
+      <a href="privacy_policy.html" class="btn btn-ghost">Privacy Policy</a>
+      <a href="index.html" class="btn btn-primary">Back to Home</a>
+    </div>
+  </div>
+</nav>
+
+<header class="doc-header">
+  <div class="inner">
+    <p class="eyebrow">Legal</p>
+    <h1>Terms of Service</h1>
+    <p class="updated mono">Last updated: 20 February 2026</p>
+    <p class="intro">These Terms of Service ("Terms") govern your access to and use of the DermaLens AI mobile application and related services ("App", "Service"). DermaLens AI is owned and operated by <strong>IATROVISION Technologies Private Limited</strong> (CIN: U62099GJ2026PTC178696), India. By accessing or using the App, you agree to be bound by these Terms. If you do not agree, you must not use the App.</p>
+  </div>
 </header>
 
-<main>
-  <section>
-<pre>
-Terms of Service
-
-DermaLens AI
-
-Last updated: 20 February 2026
-
-These Terms of Service (“Terms”) govern your access to and use of the DermaLens AI mobile application and related services (“App”, “Service”).
-
-DermaLens AI is owned and operated by RATHOD SAMIR SUNILBHAI, India.
-
-By accessing or using the App, you agree to be bound by these Terms.
-If you do not agree, you must not use the App.
-
-1. Eligibility & Use by Minors
-
-DermaLens AI is intended primarily for users 18 years of age or older.
-
-Individuals below 18 years may use the App only through a parent or legal guardian who is 18+.
-
-In such cases:
-
-The parent or legal guardian must create and operate the account
-
-The parent or legal guardian must provide consent and supervision
-
-Any images, information, or data uploaded on behalf of a minor are deemed to be uploaded by the guardian
-
-The parent or legal guardian assumes full responsibility for the accuracy of information uploaded and for decisions made using the App.
-
-DermaLens AI does not knowingly permit unsupervised use by minors.
-
-2. Nature of the Service
-
-DermaLens AI provides:
-
-AI-assisted dermatology analysis
-
-Informational insights based on uploaded skin images
-
-Chat-based consultations with doctors
-
-Educational health-related content
-
-The App is designed to assist and inform, not to replace professional medical care.
-
-3. No Doctor–Patient Relationship
-
-Use of the App:
-
-Does not establish a guaranteed or permanent doctor–patient relationship
-
-Does not involve physical examination
-
-May involve medical opinions based on limited digital information
-
-Medical opinions may vary and should not be treated as definitive.
-
-4. Medical Disclaimer
-
-You acknowledge and agree that:
-
-AI outputs are provided for informational purposes only
-
-AI predictions may be inaccurate, incomplete, or delayed
-
-Chat-based consultations have inherent limitations
-
-Final medical decisions must be made by the user (or guardian, where applicable) in consultation with a qualified medical professional
-
-DermaLens AI does not guarantee assessment accuracy, treatment outcomes, or medical results.
-
-5. Medication Information Clause (Prescription & OTC)
-
-5.1 Prescription-Only Drugs
-
-- Displayed strictly for educational purposes
-- Do not constitute prescriptions
-- Must be used only under qualified medical supervision
-
-5.2 Over-The-Counter (OTC) Drugs
-
-The App may display information about medications commonly available as OTC drugs.
-
-You expressly agree that:
-- OTC drug information is not medical advice
-- OTC availability does not guarantee safety or suitability
-- You are responsible for checking drug allergies, sensitivities, and contraindications before use
-- You must read labels, warnings, and instructions carefully
-- You should consult a medical professional if unsure
-
-Any allergic reaction, adverse effect, misuse, or harm resulting from OTC drug use is solely your responsibility.
-
-6. Limitation of Liability
-
-To the maximum extent permitted by applicable law, DermaLens AI, its owner, developers, associated doctors, and service providers shall not be liable for:
-
-Any indirect, incidental, consequential, or special damages
-
-Any injury, loss, delay, misassessment, adverse outcome, or complication
-
-Any reliance placed on AI-generated outputs, informational content, or chat-based consultations
-
-Any misuse of prescription-only medication referenced in the App
-
-Any interruption, error, or failure of the App or third-party services
-
-You acknowledge that use of the App and reliance on its content is at your own discretion and risk.
-
-Nothing in these Terms limits or excludes liability where such limitation or exclusion is prohibited under applicable law.
-
-7. User Responsibilities
-
-You agree to:
-
-Provide accurate and lawful information
-
-Upload only images and data you are authorized to share
-
-Use the App only for lawful, personal, and informational purposes
-
-Supervise and take responsibility for minor usage where applicable
-
-You are responsible for all activity conducted through your account.
-
-8. Prohibited Activities
-
-You must not:
-
-Upload false, misleading, harmful, or illegal content
-
-Impersonate any individual or medical professional
-
-Abuse, harass, or threaten doctors or other users
-
-Attempt unauthorized access to systems or data
-
-Reverse-engineer, copy, or exploit any part of the App
-
-Violation may result in immediate suspension or termination.
-
-9. Account Suspension & Termination
-
-DermaLens AI reserves the right, at its sole discretion, to:
-
-Suspend or terminate accounts
-
-Restrict access to features
-
-Remove content or data
-
-This may occur due to:
-
-Violation of these Terms
-
-Misuse or abuse of the App
-
-Security, legal, or regulatory requirements
-
-No compensation is payable upon suspension or termination.
-
-10. Data & Privacy
-
-Collection and use of data are governed by the Privacy Policy
-
-By using the App, you consent to data processing as described therein
-
-You may request account or data deletion as per the Privacy Policy
-
-11. Intellectual Property
-
-All software, AI models, content, design, and branding are owned by DermaLens AI
-
-You are granted a limited, non-exclusive, non-transferable, revocable license to use the App
-
-You may not copy, modify, distribute, or commercially exploit any part of the App without permission
-
-12. Third-Party Services
-
-The App relies on third-party services (including Firebase, Replit, and Neon).
-
-DermaLens AI is not responsible for:
-
-Downtime or failures of third-party services
-
-Data practices of third-party providers beyond disclosed use
-
-13. Modifications to the App or Terms
-
-We may modify, suspend, or discontinue any part of the App at any time
-
-These Terms may be updated periodically
-
-Continued use of the App constitutes acceptance of the revised Terms
-
-14. Governing Law & Jurisdiction
-
-These Terms are governed by and construed in accordance with the laws of India.
-
-You agree that courts located in India shall have exclusive jurisdiction over any disputes arising from use of the App.
-
-15. Severability
-
-If any provision of these Terms is held invalid or unenforceable, the remaining provisions shall remain in full force and effect.
-
-16. Contact Information
-
-Owner: RATHOD SAMIR SUNILBHAI
-App Name: DermaLens AI
-Email: dermalensai@outlook.com
-
-Country: India
-</pre>
-  </section>
-</main>
+<article>
+
+  <div class="legal-section">
+    <div class="legal-num mono">01</div>
+    <div>
+      <h2>Eligibility &amp; Use by Minors</h2>
+      <p>DermaLens AI is intended primarily for users 18 years of age or older. Individuals below 18 years may use the App only through a parent or legal guardian who is 18+. In such cases:</p>
+      <ul>
+        <li>The parent or legal guardian must create and operate the account</li>
+        <li>The parent or legal guardian must provide consent and supervision</li>
+        <li>Any images, information, or data uploaded on behalf of a minor are deemed to be uploaded by the guardian</li>
+      </ul>
+      <p>The parent or legal guardian assumes full responsibility for the accuracy of information uploaded and for decisions made using the App. DermaLens AI does not knowingly permit unsupervised use by minors.</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-num mono">02</div>
+    <div>
+      <h2>Nature of the Service</h2>
+      <p>DermaLens AI provides AI-assisted dermatology analysis, informational insights based on uploaded skin images, chat-based consultations with doctors, and educational health-related content.</p>
+      <p>The App is designed to assist and inform, not to replace professional medical care.</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-num mono">03</div>
+    <div>
+      <h2>No Doctor&ndash;Patient Relationship</h2>
+      <p>Use of the App does not establish a guaranteed or permanent doctor&ndash;patient relationship, does not involve physical examination, and may involve medical opinions based on limited digital information. Medical opinions may vary and should not be treated as definitive.</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-num mono">04</div>
+    <div>
+      <h2>Medical Disclaimer</h2>
+      <p>You acknowledge and agree that:</p>
+      <ul>
+        <li>AI outputs are provided for informational purposes only</li>
+        <li>AI predictions may be inaccurate, incomplete, or delayed</li>
+        <li>Chat-based consultations have inherent limitations</li>
+        <li>Final medical decisions must be made by the user (or guardian, where applicable) in consultation with a qualified medical professional</li>
+      </ul>
+      <p>DermaLens AI does not guarantee assessment accuracy, treatment outcomes, or medical results.</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-num mono">05</div>
+    <div>
+      <h2>Medication Information Clause (Prescription &amp; OTC)</h2>
+      <h3>5.1 Prescription-Only Drugs</h3>
+      <ul>
+        <li>Displayed strictly for educational purposes</li>
+        <li>Do not constitute prescriptions</li>
+        <li>Must be used only under qualified medical supervision</li>
+      </ul>
+      <h3>5.2 Over-The-Counter (OTC) Drugs</h3>
+      <p>The App may display information about medications commonly available as OTC drugs. You expressly agree that:</p>
+      <ul>
+        <li>OTC drug information is not medical advice</li>
+        <li>OTC availability does not guarantee safety or suitability</li>
+        <li>You are responsible for checking drug allergies, sensitivities, and contraindications before use</li>
+        <li>You must read labels, warnings, and instructions carefully</li>
+        <li>You should consult a medical professional if unsure</li>
+      </ul>
+      <p>Any allergic reaction, adverse effect, misuse, or harm resulting from OTC drug use is solely your responsibility.</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-num mono">06</div>
+    <div>
+      <h2>Limitation of Liability</h2>
+      <p>To the maximum extent permitted by applicable law, DermaLens AI, its owner, developers, associated doctors, and service providers shall not be liable for:</p>
+      <ul>
+        <li>Any indirect, incidental, consequential, or special damages</li>
+        <li>Any injury, loss, delay, misassessment, adverse outcome, or complication</li>
+        <li>Any reliance placed on AI-generated outputs, informational content, or chat-based consultations</li>
+        <li>Any misuse of prescription-only medication referenced in the App</li>
+        <li>Any interruption, error, or failure of the App or third-party services</li>
+      </ul>
+      <div class="callout"><strong>You acknowledge</strong> that use of the App and reliance on its content is at your own discretion and risk. Nothing in these Terms limits or excludes liability where such limitation or exclusion is prohibited under applicable law.</div>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-num mono">07</div>
+    <div>
+      <h2>User Responsibilities</h2>
+      <p>You agree to:</p>
+      <ul>
+        <li>Provide accurate and lawful information</li>
+        <li>Upload only images and data you are authorized to share</li>
+        <li>Use the App only for lawful, personal, and informational purposes</li>
+        <li>Supervise and take responsibility for minor usage where applicable</li>
+      </ul>
+      <p>You are responsible for all activity conducted through your account.</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-num mono">08</div>
+    <div>
+      <h2>Prohibited Activities</h2>
+      <p>You must not:</p>
+      <ul>
+        <li>Upload false, misleading, harmful, or illegal content</li>
+        <li>Impersonate any individual or medical professional</li>
+        <li>Abuse, harass, or threaten doctors or other users</li>
+        <li>Attempt unauthorized access to systems or data</li>
+        <li>Reverse-engineer, copy, or exploit any part of the App</li>
+      </ul>
+      <p>Violation may result in immediate suspension or termination.</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-num mono">09</div>
+    <div>
+      <h2>Account Suspension &amp; Termination</h2>
+      <p>DermaLens AI reserves the right, at its sole discretion, to suspend or terminate accounts, restrict access to features, or remove content or data. This may occur due to violation of these Terms, misuse or abuse of the App, or security, legal, or regulatory requirements.</p>
+      <p>No compensation is payable upon suspension or termination.</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-num mono">10</div>
+    <div>
+      <h2>Data &amp; Privacy</h2>
+      <p>Collection and use of data are governed by the <a href="privacy_policy.html" style="color:var(--rose-deep);">Privacy Policy</a>. By using the App, you consent to data processing as described therein. You may request account or data deletion as per the Privacy Policy.</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-num mono">11</div>
+    <div>
+      <h2>Intellectual Property</h2>
+      <p>All software, AI models, content, design, and branding are owned by DermaLens AI. You are granted a limited, non-exclusive, non-transferable, revocable license to use the App. You may not copy, modify, distribute, or commercially exploit any part of the App without permission.</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-num mono">12</div>
+    <div>
+      <h2>Third-Party Services</h2>
+      <p>The App relies on third-party services (including Firebase, Replit, and Neon). DermaLens AI is not responsible for downtime or failures of third-party services, or the data practices of third-party providers beyond disclosed use.</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-num mono">13</div>
+    <div>
+      <h2>Modifications to the App or Terms</h2>
+      <p>We may modify, suspend, or discontinue any part of the App at any time. These Terms may be updated periodically. Continued use of the App constitutes acceptance of the revised Terms.</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-num mono">14</div>
+    <div>
+      <h2>Governing Law &amp; Jurisdiction</h2>
+      <p>These Terms are governed by and construed in accordance with the laws of India. You agree that courts located in India shall have exclusive jurisdiction over any disputes arising from use of the App.</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-num mono">15</div>
+    <div>
+      <h2>Severability</h2>
+      <p>If any provision of these Terms is held invalid or unenforceable, the remaining provisions shall remain in full force and effect.</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-num mono">16</div>
+    <div>
+      <h2>Contact Information</h2>
+      <p><strong>Owner:</strong> IATROVISION Technologies Private Limited<br/>
+      <strong>CIN:</strong> U62099GJ2026PTC178696<br/>
+      <strong>App Name:</strong> DermaLens AI<br/>
+      <strong>Email:</strong> <a href="mailto:dermalensai@outlook.com" style="color:var(--rose-deep);">dermalensai@outlook.com</a></p>
+      <p><strong>Registered Address:</strong> C-117, Balaji Krupa Society, Palanpur Road, Navyug College, Surat, Gujarat 395009, India<br/>
+      <strong>Country:</strong> India</p>
+    </div>
+  </div>
+
+</article>
 
 <footer>
-  © 2026 DermaLens AI
+  <div class="inner">
+    <div>
+      <a href="index.html">Home</a>
+      <a href="privacy_policy.html">Privacy Policy</a>
+      <a href="delete_account.html">Delete Account</a>
+      <a href="pitch-deck.html">Pitch Deck</a>
+    </div>
+    <span>&copy; 2026 IATROVISION Technologies Private Limited.</span>
+  </div>
 </footer>
 
 </body>
