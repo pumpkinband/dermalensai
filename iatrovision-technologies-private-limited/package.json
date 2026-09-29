@@ -1,0 +1,15 @@
+{
+  "name": "iatrovision-company-page",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "esbuild dotted-surface.js --bundle --minify --format=esm --target=es2020 --legal-comments=eof --outfile=assets/dotted-surface.min.js"
+  },
+  "dependencies": {
+    "three": "0.180.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.27.3"
+  }
+}
