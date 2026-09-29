@@ -6,7 +6,6 @@ import * as THREE from 'three';
 const container = document.getElementById('dotted-surface');
 const pauseButton = document.getElementById('motion-toggle');
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-const colorScheme = matchMedia('(prefers-color-scheme: dark)');
 let renderer;
 
 try {
@@ -20,7 +19,9 @@ if (renderer) {
   pauseButton.hidden = false;
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(60, 1, 1, 10000);
-  camera.position.set(0, 355, 1220);
+  // Look down across the surface so dots fill the page's fixed viewport layer.
+  camera.position.set(0, 1000, 1220);
+  camera.lookAt(0, 0, 0);
   const geometry = new THREE.BufferGeometry();
   const positions = new Float32Array(40 * 60 * 3);
   for (let x = 0; x < 40; x++) {
@@ -108,7 +109,6 @@ if (renderer) {
   const themeObserver = new MutationObserver(theme);
   themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
   reducedMotion.addEventListener('change', changeMotion);
-  colorScheme.addEventListener('change', theme);
   pauseButton.addEventListener('click', toggleMotion);
   document.addEventListener('visibilitychange', visibility);
   renderer.domElement.addEventListener('webglcontextlost', event => {
@@ -123,7 +123,6 @@ if (renderer) {
     sizeObserver.disconnect();
     themeObserver.disconnect();
     reducedMotion.removeEventListener('change', changeMotion);
-    colorScheme.removeEventListener('change', theme);
     pauseButton.removeEventListener('click', toggleMotion);
     document.removeEventListener('visibilitychange', visibility);
     geometry.dispose();
