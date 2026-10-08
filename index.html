@@ -92,6 +92,7 @@
   .nav-links{ display:flex; align-items:center; gap:28px; font-size:14px; font-weight:600; }
   .nav-links a{ text-decoration:none; color:var(--ink-muted); transition:color .15s; }
   .nav-links a:hover{ color:var(--ink); }
+  .nav-links a.mobile-only{ display:none; }
   .nav-cta{ display:flex; align-items:center; gap:12px; }
   .nav-toggle{ display:none; background:none; border:none; cursor:pointer; padding:6px; }
   .nav-toggle span{ display:block; width:22px; height:2px; background:var(--ink); margin:5px 0; }
@@ -104,6 +105,7 @@
     }
     .nav-links.open{ max-height:320px; }
     .nav-links a{ padding:14px 24px; width:100%; border-top:1px solid var(--line); color:var(--ink); }
+    .nav-links a.mobile-only{ display:block; }
     .nav-cta .btn-ghost{ display:none; }
     .nav-toggle{ display:block; }
   }
@@ -216,9 +218,10 @@
       <a href="#how-it-works">How it works</a>
       <a href="#technology">Technology</a>
       <a href="pitch-deck.html">Pitch Deck</a>
+      <a href="https://dermalensai.in/iatrovision-technologies-private-limited/" class="mobile-only">Company</a>
     </div>
     <div class="nav-cta">
-      <a href="pitch-deck.html" class="btn btn-ghost">Pitch Deck</a>
+      <a href="https://dermalensai.in/iatrovision-technologies-private-limited/" class="btn btn-ghost">Company</a>
       <a href="https://play.google.com/store/apps/details?id=com.dermalens.ai" class="btn btn-primary">Get the App</a>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
     </div>
